@@ -1,0 +1,67 @@
+.link {
+  text-decoration: none;
+  color: var(--color-primary);
+
+  .card {
+    padding: 20px;
+    width: 30rem;
+    margin: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    & .title {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.5rem;
+      & .date {
+        padding: 10px;
+        width: 56px;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 0.8rem;
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+        & span {
+          padding: 5px;
+          text-align: center;
+          font-weight: 600;
+          background-color: var(--color-grey);
+          border-radius: 8px;
+        }
+      }
+      & .titleBlock {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        & h3 {
+          margin: 0;
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+        & span {
+          font-size: 0.9rem;
+          font-weight: 400;
+        }
+      }
+    }
+    & p {
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      text-align: left;
+      text-wrap: balance;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      white-space: normal;
+    }
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
