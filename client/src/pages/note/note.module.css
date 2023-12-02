@@ -1,6 +1,68 @@
-.icon {
+.status {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  & .icon {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+  }
+  & span {
+    padding: 5px 10px;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.card {
   width: 100%;
   height: auto;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: flex-start;
+  & .date {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  & .title {
+    padding: 30px;
+    text-align: center;
+  }
+  & .content {
+    padding: 30px;
+    text-align: center;
+    & p {
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+  }
+}
+
+.btnContainer {
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btnPending {
+  background-color: var(--color-btn-pending);
+  color: var(--color-btn-text);
+  text-transform: capitalize;
+}
+
+.btnCompleted {
+  background-color: var(--color-btn-completed);
+  color: var(--color-grey);
+  text-transform: capitalize;
 }

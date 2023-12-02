@@ -4,7 +4,7 @@
 
   .card {
     padding: 20px;
-    width: 30rem;
+    width: 40rem;
     margin: 1rem;
     border-radius: 10px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
@@ -62,13 +62,14 @@
     & .status {
       display: flex;
       justify-content: flex-end;
-      gap: 0.5rem;
+
       & span {
-        padding: 5px;
+        padding: 5px 10px;
         text-align: center;
         font-weight: 600;
-        background-color: var(--color-grey);
         border-radius: 8px;
+        border: none;
+        cursor: pointer;
       }
     }
     &:hover {
@@ -76,4 +77,16 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
   }
+}
+
+.btnPending {
+  background-color: var(--color-btn-pending);
+  color: var(--color-btn-text);
+  text-transform: capitalize;
+}
+
+.btnCompleted {
+  background-color: var(--color-btn-completed);
+  color: var(--color-grey);
+  text-transform: capitalize;
 }

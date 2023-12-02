@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 import CardNote from "../../components/CardNote/CardNote"
-const plusIcon = "../../../public/assets/icons8-plus.svg"
+const plusIcon = "/assets/icons8-plus.svg"
 
 import { getNotesRequest } from "../../api/notes"
 
@@ -18,7 +18,7 @@ const Home = () => {
         if (res === undefined) {
           throw new Error("Response is undefined")
         }
-        console.log("res:", res.data)
+
         setNotes(res.data.notes)
       } catch (error) {
         console.log(error)
@@ -35,9 +35,11 @@ const Home = () => {
         <img src={plusIcon} alt="plus-icon" />
       </Link>
 
-      {notes.map((note) => (
-        <CardNote key={note.id} note={note} />
-      ))}
+      {notes !== undefined ? (
+        notes.map((note) => <CardNote key={note.id} note={note} />)
+      ) : (
+        <div>Add your first note</div>
+      )}
     </>
   )
 }

@@ -1,13 +1,14 @@
 import styles from "./newNote.module.css"
 
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button"
-// import DeleteIcon from "@mui/icons-material/Delete"
 import SendIcon from "@mui/icons-material/Send"
-const backIcon = "../../../public/assets/icons8-back-50.png"
+import Alert from "@mui/material/Alert"
+
+const backIcon = "/assets/icons8-back-50.png"
 
 import { createNoteRequest } from "../../api/notes"
 
@@ -17,6 +18,9 @@ const NewNote = () => {
   const [titleError, setTitleError] = useState(false)
   const [descriptionError, setDescriptionError] = useState(false)
   const [formValid, setFormValid] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [statusMessage, setStatusMessage] = useState("")
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (title && description) {
@@ -44,6 +48,16 @@ const NewNote = () => {
       try {
         const res = await createNoteRequest(data)
         console.log("res:", res)
+        if (res === undefined) {
+          throw new Error("Response is undefined")
+        }
+        if (res.status === 200) {
+          setSuccess(true)
+          setStatusMessage(res.data.message)
+          setTimeout(() => {
+            navigate("/")
+          }, 1000)
+        }
       } catch (error) {
         console.log(error)
       }
@@ -52,6 +66,7 @@ const NewNote = () => {
 
   return (
     <>
+      {success && <Alert severity="success">{statusMessage}</Alert>}
       <Link to="/" className={styles.icon}>
         <img src={backIcon} alt="plus-icon" />
       </Link>
@@ -93,9 +108,6 @@ const NewNote = () => {
         </div>
 
         <div className={styles.buttonsForm}>
-          {/* <Button variant="outlined" startIcon={<DeleteIcon />}>
-            Delete
-          </Button> */}
           <Button
             variant="contained"
             endIcon={<SendIcon />}

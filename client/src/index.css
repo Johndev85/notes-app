@@ -7,6 +7,9 @@
   --color-bg-container: #f8fafa;
   --color-grey: #e1e1e1;
   --color-grey-dark: #919191;
+  --color-btn-pending: #cd8513;
+  --color-btn-completed: #5daa60;
+  --color-btn-text: #ffe2b7;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

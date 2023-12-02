@@ -6,26 +6,26 @@ export const getNotesRequest = async () => {
 }
 
 //get a note
-export const getNoteRequest = async (note) => {
-  axiosInstance.get(`/notes/${note.id}`)
+export const getNoteRequest = async (id) => {
+  return axiosInstance.get(`/notes/${id}`)
 }
 
 //create a note
 export const createNoteRequest = async (note) => {
-  axiosInstance.post("/notes", note)
+  return axiosInstance.post("/notes", note)
 }
 
 //delete a note
-export const deleteNoteRequest = async (note) => {
-  axiosInstance.delete(`/notes/${note.id}`)
+export const deleteNoteRequest = async (id) => {
+  return axiosInstance.delete(`/notes/${id}`)
 }
 
 //update a note
 export const updateNoteRequest = async (note) => {
-  axiosInstance.put(`/notes/${note.id}`, note)
+  return axiosInstance.put(`/notes/${note.id}`, note)
 }
 
 //update status of a note by id
 export const updateNoteStatusRequest = async (note) => {
-  axiosInstance.put(`/notes/${note.id}/status`, note)
+  return axiosInstance.put(`/notes/${note.id}/status`, note.status)
 }

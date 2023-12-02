@@ -21,7 +21,15 @@ const CardNote = ({ note }) => {
         </div>
         <p>{note.content}</p>
         <div className={styles.status}>
-          <span>{note.status}</span>
+          <span
+            className={`${
+              note.status === "completed"
+                ? styles.btnCompleted
+                : styles.btnPending
+            }`}
+          >
+            {note.status}
+          </span>
         </div>
       </div>
     </Link>
