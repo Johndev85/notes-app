@@ -4,8 +4,8 @@ import { format } from "date-fns"
 import { Link } from "react-router-dom"
 
 const CardNote = ({ note }) => {
-  const formattedDate = format(new Date(note.date), "EE d")
-  const hourDate = format(new Date(note.date), "HH:mm")
+  const formattedDate = format(new Date(note.createdAt), "EE d")
+  const hourDate = format(new Date(note.createdAt), "HH:mm")
 
   return (
     <Link to={`/note/${note.id}`} className={styles.link}>
@@ -19,8 +19,10 @@ const CardNote = ({ note }) => {
             <span className={styles.hour}>{hourDate}</span>
           </div>
         </div>
-
         <p>{note.content}</p>
+        <div className={styles.status}>
+          <span>{note.status}</span>
+        </div>
       </div>
     </Link>
   )

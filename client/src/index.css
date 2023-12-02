@@ -6,10 +6,7 @@
   --color-primary: #000000;
   --color-bg-container: #f8fafa;
   --color-grey: #e1e1e1;
-
-  /* color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424; */
+  --color-grey-dark: #919191;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
