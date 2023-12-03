@@ -1,20 +1,31 @@
-import styles from "./newNote.module.css"
+import styles from "./updateNote.module.css"
 
 import { useState, useEffect } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useLocation } from "react-router-dom"
 import Box from "@mui/material/Box"
+
+import InputLabel from "@mui/material/InputLabel"
+import MenuItem from "@mui/material/MenuItem"
+import Select from "@mui/material/Select"
+
 import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button"
-import SendIcon from "@mui/icons-material/Send"
+import UpdateIcon from "@mui/icons-material/Update"
 import Alert from "@mui/material/Alert"
 
 const backIcon = "/assets/icons8-back-50.png"
 
-import { createNoteRequest } from "../../api/notes"
+import { updateNoteRequest } from "../../api/notes"
 
-const NewNote = () => {
-  const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
+const UpdateNote = () => {
+  const location = useLocation()
+
+  //preview data
+  const previewData = location.state.note
+
+  const [title, setTitle] = useState(previewData.title)
+  const [description, setDescription] = useState(previewData.content)
+  const [status, setStatus] = useState(previewData.status)
   const [titleError, setTitleError] = useState(false)
   const [descriptionError, setDescriptionError] = useState(false)
   const [formValid, setFormValid] = useState(false)
@@ -38,15 +49,22 @@ const NewNote = () => {
     }
   }
 
+  //handle select
+  const handleChangeSelect = (e) => {
+    setStatus(e.target.value)
+  }
+
   const handleSubmit = async () => {
     if (formValid) {
       const data = {
+        id: previewData.id,
         title: title,
         content: description,
+        status: status,
       }
 
       try {
-        const res = await createNoteRequest(data)
+        const res = await updateNoteRequest(data)
         if (res === undefined) {
           throw new Error("Response is undefined")
         }
@@ -66,10 +84,10 @@ const NewNote = () => {
   return (
     <>
       {success && <Alert severity="success">{statusMessage}</Alert>}
-      <Link to="/" className={styles.icon}>
+      <Link to={`/note/${previewData.id}`} className={styles.icon}>
         <img src={backIcon} alt="plus-icon" />
       </Link>
-      <h2>New Note</h2>
+      <h2>Update Note</h2>
       <Box
         component="form"
         sx={{
@@ -104,16 +122,26 @@ const NewNote = () => {
             error={descriptionError}
             helperText={descriptionError && "Description is required"}
           />
+          <InputLabel>Status</InputLabel>
+          <Select
+            value={status}
+            label="Status"
+            autoWidth
+            onChange={handleChangeSelect}
+          >
+            <MenuItem value={"pending"}>Pending</MenuItem>
+            <MenuItem value={"completed"}>Completed</MenuItem>
+          </Select>
         </div>
 
         <div className={styles.buttonsForm}>
           <Button
             variant="contained"
-            endIcon={<SendIcon />}
+            endIcon={<UpdateIcon />}
             onClick={handleSubmit}
             disabled={!formValid}
           >
-            Create note
+            Update note
           </Button>
         </div>
       </Box>
@@ -121,4 +149,4 @@ const NewNote = () => {
   )
 }
 
-export default NewNote
+export default UpdateNote

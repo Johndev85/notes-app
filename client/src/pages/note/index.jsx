@@ -1,6 +1,6 @@
 import styles from "./note.module.css"
 
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useLocation } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { format } from "date-fns"
 import UpdateIcon from "@mui/icons-material/Update"
@@ -23,14 +23,16 @@ const Note = () => {
   const [id, setId] = useState(null)
   const [formattedDate, setFormattedDate] = useState("")
   const [hourDate, setHourDate] = useState("")
+  const [formattedDateUpdate, setFormattedDateUpdate] = useState("")
+  const [hourDateUpdate, setHourDateUpdate] = useState("")
   const [success, setSuccess] = useState(false)
   const [statusMessage, setStatusMessage] = useState("")
   const [openDialog, setOpenDialog] = useState(false)
   const navigate = useNavigate()
+  const location = useLocation()
 
-  //get id from url
-  const url = window.location.pathname
-  console.log("url:", url)
+  //get  pathname from url
+  const url = location.pathname
 
   //get note  by id
   useEffect(() => {
@@ -65,14 +67,18 @@ const Note = () => {
       )
       setHourDate(format(new Date(note.createdAt), "HH:mm"))
     }
-  }, [note.createdAt])
+
+    if (note.updatedAt) {
+      setFormattedDateUpdate(format(new Date(note.updatedAt), "yyyy-MM-dd"))
+      setHourDateUpdate(format(new Date(note.updatedAt), "HH:mm"))
+    }
+  }, [note.createdAt, note.updatedAt])
 
   //open dialog
   const handleConfirmationDelete = () => {
     setOpenDialog(true)
   }
 
-  //close dialog
   const handleClose = () => {
     setOpenDialog(false)
   }
@@ -97,12 +103,21 @@ const Note = () => {
     }
   }
 
+  //handle update
+  const handleUpdate = () => {
+    navigate(`/update-note`, {
+      state: {
+        note: note,
+      },
+    })
+  }
+
   return (
     <>
       {success && <Alert severity="success">{statusMessage}</Alert>}
 
       <div className={styles.status}>
-        <Link to="/" className={styles.icon}>
+        <Link to={"/"} className={styles.icon}>
           <img src={backIcon} alt="plus-icon" />
         </Link>
         <span
@@ -137,12 +152,19 @@ const Note = () => {
         <Button
           variant="contained"
           endIcon={<UpdateIcon />}
-          // onClick={() => {})}
-          // disabled={() => {}
+          onClick={handleUpdate}
         >
           update
         </Button>
       </div>
+      {note.updatedAt > note.createdAt && (
+        <div className={styles.lastUpdate}>
+          <span>Last update: </span>
+          <span>{formattedDateUpdate}</span>
+          <span className={styles.hour}>{hourDateUpdate}</span>{" "}
+        </div>
+      )}
+
       <Dialog
         open={openDialog}
         onClose={handleClose}

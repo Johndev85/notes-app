@@ -98,7 +98,7 @@ router.delete("/notes/:id", async (req, res, next) => {
 router.put("/notes/:id", async (req, res, next) => {
   try {
     const { id } = req.params
-    const { title, content } = req.body
+    const { title, content, status } = req.body
     const updatedNote = await prisma.notes.update({
       where: {
         id: parseInt(id),
@@ -106,6 +106,7 @@ router.put("/notes/:id", async (req, res, next) => {
       data: {
         title,
         content,
+        status,
       },
     })
 

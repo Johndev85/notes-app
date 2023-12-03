@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: flex-start;
   gap: 30px;
-  background-color: var(--color-grey-dark);
+  /* background-color: var(--color-grey-dark); */
   & .container {
     padding: 20px;
     width: 100%;

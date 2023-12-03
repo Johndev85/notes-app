@@ -55,6 +55,13 @@
   justify-content: space-around;
 }
 
+.lastUpdate {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
 .btnPending {
   background-color: var(--color-btn-pending);
   color: var(--color-btn-text);

@@ -27,8 +27,6 @@ const Home = () => {
     getNotes()
   }, [])
 
-  console.log("notes:", notes)
-
   return (
     <>
       <Link to="/add-note" className={styles.icon}>
@@ -38,7 +36,9 @@ const Home = () => {
       {notes !== undefined ? (
         notes.map((note) => <CardNote key={note.id} note={note} />)
       ) : (
-        <div>Add your first note</div>
+        <div className={styles.emptyContainer}>
+          <span>Add your first note</span>
+        </div>
       )}
     </>
   )
