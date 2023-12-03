@@ -1,4 +1,5 @@
 import express from "express"
+import history from "connect-history-api-fallback"
 import cors from "cors"
 import { resolve } from "path"
 import morgan from "morgan"
@@ -11,9 +12,12 @@ app.use(cors())
 app.use(morgan("dev"))
 
 app.use(express.urlencoded({ extended: false }))
-app.use(express.static(resolve("client/dist")))
 app.use(express.json())
 
 app.use("/api", notesRoutes)
+
+app.use(history())
+
+app.use(express.static(resolve("client/dist")))
 
 export default app

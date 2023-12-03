@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/add-note" element={<NewNote />} />
+          <Route path="/new-note" element={<NewNote />} />
           <Route path="/note/:id" element={<Note />} />
           <Route path="/update-note" element={<UpdateNote />} />
         </Routes>

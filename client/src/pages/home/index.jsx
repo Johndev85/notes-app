@@ -38,7 +38,7 @@ const Home = () => {
 
   return (
     <div className={styles.homeContainer}>
-      <Link to="/add-note" className={styles.icon}>
+      <Link to="/new-note" className={styles.icon}>
         <Fab color="primary" aria-label="add">
           <AddIcon />
         </Fab>
