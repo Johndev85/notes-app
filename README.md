@@ -74,7 +74,7 @@ npm run dev
 
 ## 🛠 Deployment
 
-- Deploy: [https://railway.app/ ](https://railway.app/)
+- Deploy: [https://notes-app-production-bd97.up.railway.app/](https://notes-app-production-bd97.up.railway.app/)
 
 ---
 
