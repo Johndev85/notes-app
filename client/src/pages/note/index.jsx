@@ -63,9 +63,7 @@ const Note = () => {
   //format date
   useEffect(() => {
     if (note.createdAt) {
-      setFormattedDate(
-        format(new Date(note.createdAt), "EEEE dd 'de' MMM 'de' yyyy")
-      )
+      setFormattedDate(format(new Date(note.createdAt), "EEEE dd MMM yyyy"))
       setHourDate(format(new Date(note.createdAt), "HH:mm"))
     }
 
@@ -114,8 +112,13 @@ const Note = () => {
   }
 
   return (
-    <>
-      {success && <Alert severity="success">{statusMessage}</Alert>}
+    <div className={styles.noteContainer}>
+      {success && (
+        <div className={styles.alert}>
+          {" "}
+          <Alert severity="success">{statusMessage}</Alert>{" "}
+        </div>
+      )}
 
       <div className={styles.status}>
         <Link to={"/"} className={styles.icon}>
@@ -138,7 +141,7 @@ const Note = () => {
           <span className={styles.hour}>{hourDate}</span>
         </div>
         <div className={styles.title}>
-          <h3>{note.title}</h3>
+          <h2>{note.title}</h2>
         </div>
         <div className={styles.content}>
           <p>{note.content}</p>
@@ -188,7 +191,7 @@ const Note = () => {
           </Button>
         </DialogActions>
       </Dialog>
-    </>
+    </div>
   )
 }
 export default Note

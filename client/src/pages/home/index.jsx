@@ -29,7 +29,7 @@ const Home = () => {
   }, [])
 
   return (
-    <>
+    <div className={styles.homeContainer}>
       <Link to="/add-note" className={styles.icon}>
         <Fab color="primary" aria-label="add">
           <AddIcon />
@@ -43,7 +43,7 @@ const Home = () => {
           <span>Add your first note</span>
         </div>
       )}
-    </>
+    </div>
   )
 }
 

@@ -82,13 +82,20 @@ const UpdateNote = () => {
   }
 
   return (
-    <>
-      {success && <Alert severity="success">{statusMessage}</Alert>}
-      <Link to={`/note/${previewData.id}`} className={styles.icon}>
-        <Fab color="primary" aria-label="add">
-          <ArrowBackIcon />
-        </Fab>
-      </Link>
+    <div className={styles.updateContainer}>
+      {success && (
+        <div className={styles.alert}>
+          {" "}
+          <Alert severity="success">{statusMessage}</Alert>{" "}
+        </div>
+      )}
+      <div className={styles.top}>
+        <Link to={`/note/${previewData.id}`} className={styles.icon}>
+          <Fab color="primary" aria-label="add">
+            <ArrowBackIcon />
+          </Fab>
+        </Link>
+      </div>
       <h2>Update Note</h2>
       <Box
         component="form"
@@ -147,7 +154,7 @@ const UpdateNote = () => {
           </Button>
         </div>
       </Box>
-    </>
+    </div>
   )
 }
 

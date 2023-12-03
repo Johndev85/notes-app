@@ -1,20 +1,36 @@
-.icon {
-  width: 100%;
-  height: auto;
+.homeContainer {
+  width: 50rem;
   display: flex;
-  justify-content: end;
-}
-
-.emptyContainer {
-  width: 100%;
-  max-width: 768px;
-  height: 100%;
-  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  & span {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--color-text);
+
+  & .icon {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: end;
+  }
+
+  & .emptyContainer {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 768px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & span {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--color-text);
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .homeContainer {
+    width: auto;
+    /* padding: 0 1rem; */
   }
 }

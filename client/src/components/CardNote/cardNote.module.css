@@ -1,8 +1,7 @@
 .link {
   text-decoration: none;
   color: var(--color-primary);
-
-  .card {
+  & .card {
     padding: 20px;
     width: 50rem;
     margin: 1rem;
@@ -15,6 +14,7 @@
       align-items: center;
       gap: 1rem;
       font-size: 1.5rem;
+      text-transform: capitalize;
       & .date {
         padding: 10px;
         width: 56px;
@@ -38,7 +38,7 @@
         align-items: flex-start;
         & h3 {
           margin: 0;
-          font-size: 1.5rem;
+          font-size: 1.3rem;
           font-weight: 600;
         }
         & span {
@@ -89,4 +89,32 @@
   background-color: var(--color-btn-completed);
   color: var(--color-grey);
   text-transform: capitalize;
+}
+
+@media screen and (max-width: 992px) {
+  .link {
+    & .card {
+      width: 40rem;
+    }
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .link {
+    & .card {
+      width: 20rem;
+      margin: 10px 0;
+      & .title {
+        gap: 10px;
+        & .titleBlock {
+          & h3 {
+            font-size: 1.2rem;
+          }
+          & span {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
 }

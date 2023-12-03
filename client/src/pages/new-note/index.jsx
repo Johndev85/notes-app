@@ -64,18 +64,24 @@ const NewNote = () => {
   }
 
   return (
-    <>
-      {success && <Alert severity="success">{statusMessage}</Alert>}
-      <Link to="/" className={styles.icon}>
-        <Fab color="primary" aria-label="add">
-          <ArrowBackIcon />
-        </Fab>
-      </Link>
+    <div className={styles.newNoteContainer}>
+      {success && (
+        <div className={styles.alert}>
+          <Alert severity="success">{statusMessage}</Alert>{" "}
+        </div>
+      )}
+      <div className={styles.top}>
+        <Link to="/" className={styles.icon}>
+          <Fab color="primary" aria-label="add">
+            <ArrowBackIcon />
+          </Fab>
+        </Link>
+      </div>
       <h2>New Note</h2>
       <Box
         component="form"
         sx={{
-          "& .MuiTextField-root": { m: 3, width: "100%" },
+          "& .MuiTextField-root": { m: 0, width: "100%" },
         }}
         noValidate
         autoComplete="off"
@@ -119,7 +125,7 @@ const NewNote = () => {
           </Button>
         </div>
       </Box>
-    </>
+    </div>
   )
 }
 

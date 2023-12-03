@@ -1,0 +1,17 @@
+.footer {
+  padding: 10px 0;
+  & .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    & span {
+      font-size: 14px;
+      color: var(--color-primary);
+      & img {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+}

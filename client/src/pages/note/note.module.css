@@ -1,113 +1,143 @@
-.status {
-  margin-bottom: 20px;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  & .icon {
+.noteContainer {
+  width: 50rem;
+  color: var(--color-primary);
+  & .alert {
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  & .status {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    & .icon {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: flex-start;
+    }
+    & span {
+      padding: 5px 10px;
+      text-align: center;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  & .card {
     width: 100%;
     height: auto;
     display: flex;
-    justify-content: flex-start;
-  }
-  & span {
-    padding: 5px 10px;
-    text-align: center;
-    font-weight: 600;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-  }
-}
-
-.card {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  & .date {
-    padding: 10px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    font-size: 0.8rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-    & span {
-      padding: 5px 15px;
-      text-align: center;
-      font-weight: 600;
-      background-color: var(--color-grey);
-      border-radius: 8px;
-    }
-  }
-  & .title {
-    padding: 30px;
-    text-align: center;
-  }
-  & .content {
-    padding: 30px;
-    text-align: center;
-    & p {
+    justify-content: flex-start;
+    & .date {
+      padding: 10px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
       font-weight: 400;
       margin-bottom: 0.5rem;
-      text-align: left;
+      & span {
+        padding: 5px 15px;
+        text-align: center;
+        font-weight: 600;
+        background-color: var(--color-grey);
+        border-radius: 8px;
+      }
+    }
+    & .title {
+      padding: 30px 0 10px 0;
+      text-align: center;
+      & h2 {
+        font-size: 1.6rem;
+        margin: 0;
+        text-transform: capitalize;
+      }
+    }
+    & .content {
+      padding: 30px;
+      text-align: center;
+      & p {
+        font-size: 1.1rem;
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+        text-align: left;
+      }
     }
   }
-}
 
-.modal {
-  & h2 {
-    margin: 30px;
-    font-weight: 600;
+  & .modal {
+    & h2 {
+      margin: 30px;
+      font-weight: 600;
+    }
+    & button {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
   }
-  & button {
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-  }
-}
 
-.btnContainer {
-  width: 100%;
-  padding: 30px;
-  display: flex;
-  justify-content: space-around;
-}
-
-.lastUpdate {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  gap: 15px;
-  & .tag {
+  & .btnContainer {
+    width: 100%;
+    padding: 30px 30px 50px 30px;
     display: flex;
-    gap: 10px;
-    padding: 5px;
-    width: auto;
-    background-color: #cddce7;
-    color: #131a21;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    & .tagTitle {
-      font-weight: 500;
+    justify-content: space-around;
+  }
+
+  & .lastUpdate {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    & .tag {
+      display: flex;
+      gap: 10px;
+      padding: 5px;
+      width: auto;
+      background-color: #cddce7;
+      color: #131a21;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      & .tagTitle {
+        font-weight: 500;
+      }
     }
+  }
+
+  & .btnPending {
+    font-size: 1.1rem;
+    background-color: var(--color-btn-pending);
+    color: var(--color-btn-text);
+    text-transform: capitalize;
+  }
+
+  & .btnCompleted {
+    font-size: 1.1rem;
+    background-color: var(--color-btn-completed);
+    color: var(--color-grey);
+    text-transform: capitalize;
   }
 }
 
-.btnPending {
-  background-color: var(--color-btn-pending);
-  color: var(--color-btn-text);
-  text-transform: capitalize;
+@media screen and (max-width: 992px) {
+  .noteContainer {
+    width: 40rem;
+  }
 }
 
-.btnCompleted {
-  background-color: var(--color-btn-completed);
-  color: var(--color-grey);
-  text-transform: capitalize;
+@media screen and (max-width: 470px) {
+  .noteContainer {
+    width: 20rem;
+  }
 }
