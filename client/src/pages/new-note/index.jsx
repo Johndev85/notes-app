@@ -7,8 +7,8 @@ import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button"
 import SendIcon from "@mui/icons-material/Send"
 import Alert from "@mui/material/Alert"
-
-const backIcon = "/assets/icons8-back-50.png"
+import { Fab } from "@mui/material"
+import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 
 import { createNoteRequest } from "../../api/notes"
 
@@ -67,7 +67,9 @@ const NewNote = () => {
     <>
       {success && <Alert severity="success">{statusMessage}</Alert>}
       <Link to="/" className={styles.icon}>
-        <img src={backIcon} alt="plus-icon" />
+        <Fab color="primary" aria-label="add">
+          <ArrowBackIcon />
+        </Fab>
       </Link>
       <h2>New Note</h2>
       <Box

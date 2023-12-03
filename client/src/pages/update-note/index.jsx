@@ -2,8 +2,10 @@ import styles from "./updateNote.module.css"
 
 import { useState, useEffect } from "react"
 import { Link, useNavigate, useLocation } from "react-router-dom"
-import Box from "@mui/material/Box"
 
+import { Fab } from "@mui/material"
+import ArrowBackIcon from "@mui/icons-material/ArrowBack"
+import Box from "@mui/material/Box"
 import InputLabel from "@mui/material/InputLabel"
 import MenuItem from "@mui/material/MenuItem"
 import Select from "@mui/material/Select"
@@ -12,8 +14,6 @@ import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button"
 import UpdateIcon from "@mui/icons-material/Update"
 import Alert from "@mui/material/Alert"
-
-const backIcon = "/assets/icons8-back-50.png"
 
 import { updateNoteRequest } from "../../api/notes"
 
@@ -85,7 +85,9 @@ const UpdateNote = () => {
     <>
       {success && <Alert severity="success">{statusMessage}</Alert>}
       <Link to={`/note/${previewData.id}`} className={styles.icon}>
-        <img src={backIcon} alt="plus-icon" />
+        <Fab color="primary" aria-label="add">
+          <ArrowBackIcon />
+        </Fab>
       </Link>
       <h2>Update Note</h2>
       <Box

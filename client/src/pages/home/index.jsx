@@ -3,7 +3,8 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 import CardNote from "../../components/CardNote/CardNote"
-const plusIcon = "/assets/icons8-plus.svg"
+import { Fab } from "@mui/material"
+import AddIcon from "@mui/icons-material/Add"
 
 import { getNotesRequest } from "../../api/notes"
 
@@ -30,7 +31,9 @@ const Home = () => {
   return (
     <>
       <Link to="/add-note" className={styles.icon}>
-        <img src={plusIcon} alt="plus-icon" />
+        <Fab color="primary" aria-label="add">
+          <AddIcon />
+        </Fab>
       </Link>
 
       {notes !== undefined ? (

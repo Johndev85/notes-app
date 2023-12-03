@@ -4,8 +4,9 @@ import { Link, useNavigate, useLocation } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { format } from "date-fns"
 import UpdateIcon from "@mui/icons-material/Update"
+import { Fab } from "@mui/material"
+import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 
-const backIcon = "/assets/icons8-back-50.png"
 import { getNoteRequest } from "../../api/notes"
 import { deleteNoteRequest } from "../../api/notes"
 
@@ -118,7 +119,9 @@ const Note = () => {
 
       <div className={styles.status}>
         <Link to={"/"} className={styles.icon}>
-          <img src={backIcon} alt="plus-icon" />
+          <Fab color="primary" aria-label="add">
+            <ArrowBackIcon />
+          </Fab>
         </Link>
         <span
           className={`${
@@ -159,9 +162,11 @@ const Note = () => {
       </div>
       {note.updatedAt > note.createdAt && (
         <div className={styles.lastUpdate}>
-          <span>Last update: </span>
-          <span>{formattedDateUpdate}</span>
-          <span className={styles.hour}>{hourDateUpdate}</span>{" "}
+          <div className={styles.tag}>
+            <span className={styles.tagTitle}>Last update: </span>
+            <span>{formattedDateUpdate}</span>
+            <span className={styles.hour}>{hourDateUpdate}</span>
+          </div>
         </div>
       )}
 
@@ -170,6 +175,7 @@ const Note = () => {
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        className={styles.modal}
       >
         <DialogTitle id="alert-dialog-title">
           {"Can you confirm the deletion?"}
