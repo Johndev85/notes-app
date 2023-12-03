@@ -10,9 +10,12 @@ import Alert from "@mui/material/Alert"
 import { Fab } from "@mui/material"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 
+import Loader from "../../components/Loader/Loader"
+
 import { createNoteRequest } from "../../api/notes"
 
 const NewNote = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [titleError, setTitleError] = useState(false)
@@ -44,7 +47,7 @@ const NewNote = () => {
         title: title,
         content: description,
       }
-
+      setIsLoading(true)
       try {
         const res = await createNoteRequest(data)
         if (res === undefined) {
@@ -78,53 +81,57 @@ const NewNote = () => {
         </Link>
       </div>
       <h2>New Note</h2>
-      <Box
-        component="form"
-        sx={{
-          "& .MuiTextField-root": { m: 0, width: "100%" },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <div>
-          <TextField
-            id="standard-multiline-flexible"
-            label="Title"
-            multiline
-            maxRows={4}
-            variant="standard"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            onBlur={() => handleBlur("title")}
-            error={titleError}
-            helperText={titleError && "Title is required"}
-          />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <Box
+          component="form"
+          sx={{
+            "& .MuiTextField-root": { m: 0, width: "100%" },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <div>
+            <TextField
+              id="standard-multiline-flexible"
+              label="Title"
+              multiline
+              maxRows={4}
+              variant="standard"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              onBlur={() => handleBlur("title")}
+              error={titleError}
+              helperText={titleError && "Title is required"}
+            />
 
-          <TextField
-            id="standard-multiline-static"
-            label="Starting writing"
-            multiline
-            rows={6}
-            variant="standard"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            onBlur={() => handleBlur("description")}
-            error={descriptionError}
-            helperText={descriptionError && "Description is required"}
-          />
-        </div>
+            <TextField
+              id="standard-multiline-static"
+              label="Starting writing"
+              multiline
+              rows={6}
+              variant="standard"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              onBlur={() => handleBlur("description")}
+              error={descriptionError}
+              helperText={descriptionError && "Description is required"}
+            />
+          </div>
 
-        <div className={styles.buttonsForm}>
-          <Button
-            variant="contained"
-            endIcon={<SendIcon />}
-            onClick={handleSubmit}
-            disabled={!formValid}
-          >
-            Create note
-          </Button>
-        </div>
-      </Box>
+          <div className={styles.buttonsForm}>
+            <Button
+              variant="contained"
+              endIcon={<SendIcon />}
+              onClick={handleSubmit}
+              disabled={!formValid}
+            >
+              Create note
+            </Button>
+          </div>
+        </Box>
+      )}
     </div>
   )
 }

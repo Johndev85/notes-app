@@ -10,6 +10,8 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import { getNoteRequest } from "../../api/notes"
 import { deleteNoteRequest } from "../../api/notes"
 
+import Loader from "../../components/Loader/Loader"
+
 //material-ui
 import Button from "@mui/material/Button"
 import DeleteIcon from "@mui/icons-material/Delete"
@@ -19,6 +21,7 @@ import DialogActions from "@mui/material/DialogActions"
 import DialogTitle from "@mui/material/DialogTitle"
 
 const Note = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const [note, setNote] = useState({})
   const [status, setStatus] = useState(null)
   const [id, setId] = useState(null)
@@ -38,6 +41,7 @@ const Note = () => {
   //get note  by id
   useEffect(() => {
     const getId = (url) => {
+      setIsLoading(true)
       setId(url.substring(url.lastIndexOf("/") + 1))
     }
     getId(url)
@@ -53,6 +57,7 @@ const Note = () => {
 
         setNote(res.data.singleNote)
         setStatus(res.data.singleNote.status)
+        setIsLoading(false)
       } catch (error) {
         console.log(error)
       }
@@ -85,6 +90,7 @@ const Note = () => {
   //handle delete
   const handleDelete = async () => {
     setOpenDialog(false)
+    setIsLoading(true)
     if (!id || id === undefined) {
       return
     }
@@ -111,11 +117,12 @@ const Note = () => {
     })
   }
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className={styles.noteContainer}>
       {success && (
         <div className={styles.alert}>
-          {" "}
           <Alert severity="success">{statusMessage}</Alert>{" "}
         </div>
       )}

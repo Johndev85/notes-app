@@ -5,7 +5,7 @@
 
 Web app that allows manage notes through a SQL database CRUD create with Nodejs, Express and PrismaORM.
 
-Check out the site here: [https://tennis-league-app.vercel.app](https://tennis-league-app.vercel.app)
+Check out the site here: [https://notes-app-production-bd97.up.railway.app/](https://notes-app-production-bd97.up.railway.app/)
 
 ---
 

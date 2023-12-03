@@ -4,7 +4,6 @@ import { resolve } from "path"
 import morgan from "morgan"
 
 import notesRoutes from "./routes/notes.routes.js"
-import { FRONTEND_URL } from "./config.js"
 
 const app = express()
 
